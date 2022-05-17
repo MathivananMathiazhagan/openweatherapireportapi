@@ -1,0 +1,29 @@
+
+spring:
+  application:
+    name: openweatherreportapi
+  mvc:
+    throw-exception-if-no-handler-found: true
+  cache:
+    cache-names:
+    - rate-limit-buckets
+    caffeine:
+      spec: maximumSize=100000,expireAfterAccess=3600s
+  web:
+    resources:
+      add-mappings: true
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+      console.settings.trace: false
+      spring.h2.console.settings.web-allow-others: false
+  datasource:
+    url: jdbc:h2:file:./data/demo ##jdbc:h2:mem:mydb
+    username: sa
+    password: sa
+    driverClassName: org.h2.Driver
+  jpa:
+    spring.jpa.database-platform: org.hibernate.dialect.H2Dialect    
+
+        
